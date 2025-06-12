@@ -1,7 +1,7 @@
 const fs = require('node:fs');
 const path = require('node:path');
 const express = require('express');
-const decode = require('safe-decode-uri-component');
+const decode = decodeURI;
 const { cookieToJson } = require('./util/util');
 const { createRequest } = require('./util/request');
 const dotenv = require('dotenv');
@@ -17,9 +17,9 @@ const cache = require('./util/apicache').middleware;
 
 /**
  * @typedef {{
-*  server?: import('http').Server,
-* }} ExpressExtension
-*/
+ *  server?: import('http').Server,
+ * }} ExpressExtension
+ */
 
 const envPath = path.join(process.cwd(), '.env');
 if (fs.existsSync(envPath)) {
